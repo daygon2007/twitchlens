@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Get Twitch data fast and efficiently.  See how you'd rank on Twitch!">
+  <meta name="author" content="Keith Murphy">
+  <title>TwitchLens - Your Twitch data resource</title>
+
+  <!-- CSS Includes -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/override.css" rel="stylesheet" type="text/css">
+
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="nav"></div>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="ad"></div>
+
+        <!-- Page Heading -->
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="page-header">What game should I play on Twitch <small>to grow my channel?  </small></h1>
+            <p>TwitchLens is a web app that helps you quickly see how highly you would rank (by viewer count) for many games on Twitch. The higher you rank the more likely you will be found by new people!</p>
+            <ol>
+              <li>Type in your expected viewer count in the textbox below.</li>
+              <li>Let the table populate (usually takes 2 seconds.)</li>
+              <li>Choose a popular game that you would currently have a high ranking with (ideally you would be between 1 and 5.)</li>
+              <li>Stream that game and enjoy!</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="jumbotron">
+          <!-- /.row -->
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Let's get started!</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+
+              <form class="form">
+                <div class="form-group">
+                  <label>Enter your expected viewer count</label>
+                  <input class="form-control" placeholder="Enter a number here">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8">
+            <h4>Your Results</h4>
+            <table class="table table-bordered table-hover table100 tablebyviewers">
+              <thead>
+                <tr>
+                  <th>Game</th>
+                  <th>Your Rank</th>
+                  <th>Top streamer by viewer count</th>
+                  <th>#3 streamer by viewer count</th>
+                  <th>#5 streamer by viewer count</th>
+                  <th>#10 streamer by viewer count</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="col-lg-4">
+            <h4>Table Legend</h4>
+            <table class="table table-bordered table-hover table100">
+              <thead>
+                <tr>
+                  <th>You should</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="success">
+                  <td>Play this game!</td>
+                  <td>The game is one of the top 100 on Twitch, and you'd still rank in the top 5 streamers!</td>
+                </tr>
+                <tr>
+                  <td>Consider avoiding this game.</td>
+                  <td>Either you'd rank poorly for this game or this game isn't popular right now.  You're better off playing something else.</td>
+                </tr>
+                <tr class="danger">
+                  <td>Avoid this game!</td>
+                  <td>Either no one is watching this game, or there are too many streamers playing this game that are more popular than you.</td>
+                </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- /.row -->
+
+
+  </div>
+  <!-- /.container-fluid -->
+
+  </div>
+  <!-- /#page-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/lens.js"></script>
+  <script src="js/underscore-min.js"></script>
+  <script>
+
+    $('input').keypress(function(e) {
+	  if( isKeypressANumber(e)) {
+        waitingonNewViewerValue();
+      } else {
+        e.preventDefault(); //stop character from entering input
+      }
+    });
+	
+	// function waits a half second to run
+    var waitingonNewViewerValue = _.debounce(onNewViewerValue, 1000);
+	
+	function onNewViewerValue() {
+
+	  removeTableRows("tablebyviewers");
+	  
+      $.ajax({
+        type: 'GET',
+        url: 'https://api.twitch.tv/kraken/games/top?limit=100',
+        headers: {
+          'Client-ID': '15eis5nq1567uq8qqkev5p5s7c0lfes'
+        },
+        success: function(twitchGamesObject) {
+          // Twitch returns a list of games objects (in .top)
+		  // sorted by number of current viewers on Twitch, 
+		  // most popular first. -- km,10.16
+		  
+          _.each(twitchGamesObject.top, function(eachGame) {
+		    
+			$.ajax({
+              type: 'GET',
+              url: 'https://api.twitch.tv/kraken/streams?game=' + eachGame.game.name,
+              headers: {
+                'Client-ID': '15eis5nq1567uq8qqkev5p5s7c0lfes'
+              },
+			  success: function(twitchStreamsObject) {
+                // Twitch returns a list of stream objects (each 
+				// accessible by .streams[i]) sorted by number of 
+				// viewers descending. -- km,10.16		
+				
+				writeTable(twitchStreamsObject, eachGame.game.name);
+			  }
+			});		  
+		  });  
+        }
+      })
+    }
+
+    // function waits a half second to run
+    //var waitingwriteTable = _.debounce(writeTable, 1000);
+
+	function writeTable(twitchStreamsObject, gameName) {
+      var Viewers = $('input').val()
+      var tr;
+      var yourRank;
+      var Rank1;
+      var Rank3;
+      var Rank5;
+      var Rank10;
+
+      if (twitchStreamsObject.streams.length < 1) {
+        Rank1 = "No streamer";
+      } else {
+        Rank1 = twitchStreamsObject.streams[0].viewers;
+      }
+
+      if (twitchStreamsObject.streams.length < 3) {
+        Rank3 = "No streamer";
+      } else {
+        Rank3 = twitchStreamsObject.streams[2].viewers;
+      }
+
+      if (twitchStreamsObject.streams.length < 5) {
+        Rank5 = "No streamer";
+      } else {
+        Rank5 = twitchStreamsObject.streams[4].viewers;
+      }
+
+      if (twitchStreamsObject.streams.length < 10) {
+        Rank10 = "No streamer";
+      } else {
+        Rank10 = twitchStreamsObject.streams[9].viewers;
+      }
+
+      var foundStreamerRanking = false;
+      
+	  for (var i = 0; i < twitchStreamsObject.streams.length; i++) {
+        if (twitchStreamsObject.streams[i].viewers < Viewers && !foundStreamerRanking) {
+          yourRank = i + 1;
+          foundStreamerRanking = true;
+        }
+      }
+
+      if (!foundStreamerRanking) {
+        yourRank = "Very Low";
+      }
+
+      if (yourRank < 5) {
+        tr = $('<tr class="success"/>');
+      } else if (yourRank < 15 || yourRank < 3) {
+        tr = $('<tr/>');
+      } else {
+        tr = $('<tr class="danger"/>');
+      }
+
+      //tr.append("<td>" + decodeURI(jsonfile.replace('/json/', '').replace('.json', '')) + "</td>");
+      tr.append("<td>" + gameName + "</td>");
+      tr.append("<td>" + yourRank + "</td>");
+      tr.append("<td>" + Rank1 + "</td>");
+      tr.append("<td>" + Rank3 + "</td>");
+      tr.append("<td>" + Rank5 + "</td>");
+      tr.append("<td>" + Rank10 + "</td>");
+      $('.tablebyviewers').append(tr);
+      sortTable("tablebyviewers");
+      
+    }
+    
+
+
+    
+  </script>
+
+
+</body>
+
+</html>

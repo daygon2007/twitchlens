@@ -1,0 +1,52 @@
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="index.html">TwitchLens<!-- #include FILE="tables.html" --></a>
+  </div>
+  <!-- Top Menu Items -->
+  <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav side-nav">
+      <li class="index">
+        <a href="index.html"><i class="fa fa-fw fa-bar-chart-o"></i> How YOU'd Rank</a>
+      </li>
+      <li class="about">
+        <a href="about.html"><i class="fa fa-fw fa-thumbs-o-up"></i> About Us</a>
+      </li>
+      <li class="log">
+        <a href="log.html"><i class="fa fa-fw fa-pencil-square-o"></i> Change Log</a>
+      </li>
+      <li class="beer">
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4JN292AG9Z4T6" target="_blank"><i class="fa fa-fw fa-beer"></i> Buy me a beer!</a>
+      </li>
+
+
+
+
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
+</nav>
+
+<script>
+  $(document).ready(function() {
+    highlightMenuItem("index");
+    highlightMenuItem("about");
+    highlightMenuItem("log");
+  });
+
+  function highlightMenuItem(page) {
+    var url = window.location.href;
+
+    if (url.toLowerCase().indexOf(page + ".html") >= 0) {
+      $("." + page).addClass("active");
+    }
+  }
+</script>
