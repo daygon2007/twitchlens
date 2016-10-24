@@ -1,129 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Get Twitch data fast and efficiently.  See how you'd rank on Twitch!">
-  <meta name="author" content="Keith Murphy">
-  <title>TwitchLens - Your Twitch data resource</title>
-
-  <!-- CSS Includes -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/sb-admin.css" rel="stylesheet">
-  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="/css/override.css" rel="stylesheet" type="text/css">
-
-  <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-  <div id="wrapper">
-    <div id="nav"></div>
-    <div id="page-wrapper">
-      <div class="container-fluid">
-        <div id="ad"></div>
-
-        <!-- Page Heading -->
-        <div class="row">
-          <div class="col-lg-12">
-            <h1 class="page-header">What game should I play on Twitch <small>to grow my channel?  </small></h1>
-            <p>TwitchLens is a web app that helps you quickly see how highly you would rank (by viewer count) for many games on Twitch. The higher you rank the more likely you will be found by new people!</p>
-            <ol>
-              <li>Type in your expected viewer count in the textbox below.</li>
-              <li>Let the table populate (usually takes 2 seconds.)</li>
-              <li>Choose a popular game that you would currently have a high ranking with (ideally you would be between 1 and 5.)</li>
-              <li>Stream that game and enjoy!</li>
-            </ol>
-          </div>
-        </div>
-
-        <div class="jumbotron">
-          <!-- /.row -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Get Twitch data fast and efficiently.  See how you'd rank on Twitch!">
+    <meta name="author" content="Keith Murphy">
+    <title>TwitchLens - Your Twitch data resource</title>
+  
+    <!-- CSS Includes -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/sb-admin.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/override.css" rel="stylesheet" type="text/css">
+  
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  </head>
+  
+  <body>
+    <div id="wrapper">
+      <div id="nav"></div>
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div id="ad"></div>
+  
+          <!-- Page Heading -->
           <div class="row">
             <div class="col-lg-12">
-              <h2>Let's get started!</h2>
+              <h1 class="page-header">What game should I play on Twitch <small>to grow my channel?  </small></h1>
+              <p>TwitchLens is a web app that helps you quickly see how highly you would rank (by viewer count) for many games on Twitch. The higher you rank the more likely you will be found by new people!</p>
+              <ol>
+                <li>Type in your expected viewer count in the textbox below.</li>
+                <li>Let the table populate (usually takes 2 seconds.)</li>
+                <li>Choose a popular game that you would currently have a high ranking with (ideally you would be between 1 and 5.)</li>
+                <li>Stream that game and enjoy!</li>
+              </ol>
+            </div>
+          </div>
+  
+          <div class="jumbotron">
+            <!-- /.row -->
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>Let's get started!</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+  
+                <form class="form">
+                  <div class="form-group">
+                    <label>Enter your expected viewer count</label>
+                    <input class="form-control" placeholder="Enter a number here">
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
           <div class="row">
+            <div class="col-lg-8">
+              <h4>Your Results</h4>
+              <table class="table table-bordered table-hover table100 tablebyviewers">
+                <thead>
+                  <tr>
+                    <th>Game</th>
+                    <th>Your Rank</th>
+                    <th>Top streamer by viewer count</th>
+                    <th>#3 streamer by viewer count</th>
+                    <th>#5 streamer by viewer count</th>
+                    <th>#10 streamer by viewer count</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
             <div class="col-lg-4">
-
-              <form class="form">
-                <div class="form-group">
-                  <label>Enter your expected viewer count</label>
-                  <input class="form-control" placeholder="Enter a number here">
-                </div>
-              </form>
+              <h4>Table Legend</h4>
+              <table class="table table-bordered table-hover table100">
+                <thead>
+                  <tr>
+                    <th>You should</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="success">
+                    <td>Play this game!</td>
+                    <td>The game is one of the top 100 on Twitch, and you'd still rank in the top 5 streamers!</td>
+                  </tr>
+                  <tr>
+                    <td>Consider avoiding this game.</td>
+                    <td>Either you'd rank poorly for this game or this game isn't popular right now.  You're better off playing something else.</td>
+                  </tr>
+                  <tr class="danger">
+                    <td>Avoid this game!</td>
+                    <td>Either no one is watching this game, or there are too many streamers playing this game that are more popular than you.</td>
+                  </tr>
+              </table>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-8">
-            <h4>Your Results</h4>
-            <table class="table table-bordered table-hover table100 tablebyviewers">
-              <thead>
-                <tr>
-                  <th>Game</th>
-                  <th>Your Rank</th>
-                  <th>Top streamer by viewer count</th>
-                  <th>#3 streamer by viewer count</th>
-                  <th>#5 streamer by viewer count</th>
-                  <th>#10 streamer by viewer count</th>
-                </tr>
-              </thead>
-            </table>
-          </div>
-          <div class="col-lg-4">
-            <h4>Table Legend</h4>
-            <table class="table table-bordered table-hover table100">
-              <thead>
-                <tr>
-                  <th>You should</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="success">
-                  <td>Play this game!</td>
-                  <td>The game is one of the top 100 on Twitch, and you'd still rank in the top 5 streamers!</td>
-                </tr>
-                <tr>
-                  <td>Consider avoiding this game.</td>
-                  <td>Either you'd rank poorly for this game or this game isn't popular right now.  You're better off playing something else.</td>
-                </tr>
-                <tr class="danger">
-                  <td>Avoid this game!</td>
-                  <td>Either no one is watching this game, or there are too many streamers playing this game that are more popular than you.</td>
-                </tr>
-            </table>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <!-- /.row -->
-
-  </div>
-  <!-- /.container-fluid -->
-
-  </div>
-  <!-- /#page-wrapper -->
-
-  </div>
-  <!-- /#wrapper -->
-
-  <!-- libs -->
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/underscore-min.js"></script>
   
-  <!-- site js -->
-  <script src="js/jshelpers.js"></script>
-  <script src="js/lens.js"></script>
-
-</body>
+        </div>
+      </div>
+      <!-- /.row -->
+  
+    </div>
+    <!-- /.container-fluid -->
+  
+    </div>
+    <!-- /#page-wrapper -->
+  
+    </div>
+    <!-- /#wrapper -->
+  
+    <!-- libs -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/underscore-min.js"></script>
+    
+    <!-- site js -->
+    <script src="js/jshelpers.js"></script>
+    <script src="js/sitescript.js"></script>
+    <script src="js/twitchgrab.js"></script>
+    
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  
+      ga('create', 'UA-75233317-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+  </body>
 </html>

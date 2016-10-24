@@ -1,138 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Get Twitch data fast and efficiently.  See how you'd rank on Twitch!">
+    <meta name="author" content="Keith Murphy">
+    <title>TwitchLens - Your Twitch data resource</title>
 
-<head>
+    <!-- CSS Includes -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/sb-admin.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/override.css" rel="stylesheet" type="text/css">
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Get Twitch data fast and efficiently.  See how you'd rank on Twitch!">
-  <meta name="author" content="Keith Murphy">
-  <title>TwitchLens - Your Twitch data resource</title>
-
-  <!-- Bootstrap Core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/sb-admin.css" rel="stylesheet">
-
-  <!-- Custom Fonts -->
-  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="/css/override.css" rel="stylesheet" type="text/css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-</head>
-
-<body>
-  <div id="wrapper">
-    <div id="nav"></div>
-    <div id="page-wrapper">
-      <div class="container-fluid">
-        <div id="ad"></div>
-
-        <!-- Page Heading -->
-        <div class="row">
-          <div class="col-lg-12">
-            <h1 class="page-header">
-                            TwitchLens Updates <small>still in development!</small>
-                        </h1>
-          </div>
-        </div>
-        <!-- /.row -->
-
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="alert alert-info alert-dismissable">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <i class="fa fa-info-circle"></i> Have a suggestion for a new feature? Email the developer at <a href="mailto:keith@twitchlens.com">keith@twitchlens.com</a>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="nav"></div>
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div id="ad"></div>
+  
+          <!-- Page Heading -->
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header">
+                TwitchLens Updates <small>still in development!</small>
+              </h1>
             </div>
           </div>
-        </div>
-        <!-- /.row -->
-        <div class="row">
-          <div class="col-lg-12">
-            <h4>Still to do</h4>
-            <ul>
-              <li>create logging</li>
-              <li>301 redirects</li>
-              <li>Need to display version on all pages.</li>
-            </ul>
+          <!-- /.row -->
+  
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-info-circle"></i> Have a suggestion for a new feature? Email the developer at <a href="mailto:keith@twitchlens.com">keith@twitchlens.com</a>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12">
-            <h4>v.1.01.00 (October 22, 2016)</h4>
-            <ul>
-              <li>We're back!</li>
-              <li>Removed JSON saving functionality.</li>
-              <li>Now only looks for top 100 games on Twitch.</li>
-              <li>Remove Top100 page</li>
-            </ul>
-            <h4>v.1.00.01 (March 17, 2016)</h4>
-            <ul>
-              <li>Redirects (with javascript) from www.twitchlens.com to twitchlens.com.</li>
-              <li>Made viewer ranking page the main page of the site.</li>
-              <li>Hitting enter no longer triggers a page load on the viewer ranking page.</li>
-              <li>Duplicates should no longer appear in viewers table.</li>
-              <li>Viewers table now sorts by game name after table is built.</li>
-              <li>Fixed a bug on viewers table where high ranking rows would not show as green.</li>
-              <li>Several minor text changes.</li>
-              <li>Darkened colors on table</li>
-              <li>Added legend to table</li>
-              <li>Some UI fixes for easier use</li>
-            </ul>
-            <h4>v.1.00.00 (March 16, 2016)</h4>
-            <ul>
-              <li>Original release.</li>
-            </ul>
+          <!-- /.row -->
+          <div class="row">
+            <div class="col-lg-12">
+              <h4>Still to do</h4>
+              <ul>
+                <li>create logging</li>
+                <li>301 redirects</li>
+                <li>Need to display version on all pages.</li>
+              </ul>
+            </div>
           </div>
+  
+          <div class="row">
+            <div class="col-lg-12">
+              <h4>v.1.01.00 (October 22, 2016)</h4>
+              <ul>
+                <li>We're back!</li>
+                <li>Removed JSON saving functionality.</li>
+                <li>Now only looks for top 100 games on Twitch.</li>
+                <li>Remove Top100 page</li>
+              </ul>
+              <h4>v.1.01.01 (October 23, 2016)</h4>
+              <ul>
+                <li>- Include all the "libs" before your code.  So bump the underscore lib up 1.  I would do that, even if lens.js doesn't use underscore, but just for consistency</li>
+                <li>Move the rest of the JS in index.html into lens.js or another included file</li>
+              </ul>
+              <h4>v.1.00.01 (March 17, 2016)</h4>
+              <ul>
+                <li>Redirects (with javascript) from www.twitchlens.com to twitchlens.com.</li>
+                <li>Made viewer ranking page the main page of the site.</li>
+                <li>Hitting enter no longer triggers a page load on the viewer ranking page.</li>
+                <li>Duplicates should no longer appear in viewers table.</li>
+                <li>Viewers table now sorts by game name after table is built.</li>
+                <li>Fixed a bug on viewers table where high ranking rows would not show as green.</li>
+                <li>Several minor text changes.</li>
+                <li>Darkened colors on table</li>
+                <li>Added legend to table</li>
+                <li>Some UI fixes for easier use</li>
+              </ul>
+              <h4>v.1.00.00 (March 16, 2016)</h4>
+              <ul>
+                <li>Original release.</li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.row -->
+  
         </div>
-        <!-- /.row -->
-
-
+        <!-- /.container-fluid -->
+  
       </div>
-      <!-- /.container-fluid -->
-
+      <!-- /#page-wrapper -->
+  
     </div>
-    <!-- /#page-wrapper -->
-
-
-
-  </div>
-  <!-- /#wrapper -->
-
-  <!-- jQuery -->
-  <script src="js/jquery.js"></script>
-
-  <!-- Bootstrap Core JavaScript -->
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/lens.js"></script>
-
-  <script>
-    (function(i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function() {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-75233317-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-
-
-</body>
-
-</html>
+    <!-- /#wrapper -->
+  
+    <!-- libs -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/underscore-min.js"></script>
+    
+    <!-- site js -->
+    <script src="js/jshelpers.js"></script>
+    <script src="js/sitescript.js"></script>
+   
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  
+      ga('create', 'UA-75233317-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+  </body>
+</html>    

@@ -1,33 +1,10 @@
-// This file is full of (hopefully) well named
-// helper functions that might be used throughout
-// the application but not page function specific.
+// This file has (hopefully) well-named helper functions.
 // Keith Murphy, 10-2016
-
-$(document).ready(function() {
-  removeWWWFromUrl();
-  addReusableSiteSections();
-});
-
-function removeWWWFromUrl()
-{
-  window.onload = function(){
-    if (location.href.indexOf('www.') > -1) {
-      location.href = location.href.replace(/www./, '');
-    }
-  };
-}
-
-function addReusableSiteSections()
-{
-  $('#nav').load("reuse/nav.html");
-  $('#ad').load("reuse/ad.html");
-  $('#tags').load("reuse/tags.html");
-}
 
 function isKeypressANumber(e) {
   try {
     var charCode = (e.which) ? e.which : e.keyCode;
-    if ((charCode >= 48 && charCode <= 57)) {
+    if (charCode >= 48 && charCode <= 57) {
       return true;
     }
   } catch (err) {
