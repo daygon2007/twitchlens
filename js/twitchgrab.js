@@ -40,11 +40,11 @@ function pullTwitchData() {
             // accessible by .streams[i]) sorted by number of 
             // viewers descending. -- km,10.16		
             streams.push( new StreamData( eachGame.game.name, twitchStreamsObject.streams));
-		  }
-		});
-		counter++;
-	  });  
-	}
+		      }
+		    });
+		    counter++;
+	    });  
+	  }
   })
 }
 
